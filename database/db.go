@@ -1,17 +1,18 @@
 package database
 
 import (
-  "os"
+	"os"
 
-  "anime-twitter-service/database/models"
+	"anime-twitter-service/database/models"
 
-
-  "gorm.io/gorm"
-  "gorm.io/driver/postgres"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
+const Db = *gorm.Database
+
 func DB() *gorm.DB {
-  db, err := gorm.Open(postgres.Open(os.Getenv("DB_STRIGN")), &gorm.Config{})
+  db, err := gorm.Open(postgres.Open(os.Getenv("DB_STRING")), &gorm.Config{})
   if err != nil {
     panic("Failed to connect")
   }
