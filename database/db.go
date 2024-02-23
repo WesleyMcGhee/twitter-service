@@ -12,12 +12,10 @@ import (
 const Db = *gorm.Database
 
 func DB() *gorm.DB {
-  db, err := gorm.Open(postgres.Open(os.Getenv("DB_STRING")), &gorm.Config{})
+  Db, err := gorm.Open(postgres.Open(os.Getenv("DB_STRING")), &gorm.Config{})
   if err != nil {
     panic("Failed to connect")
   }
 
   db.AutoMigrate(&models.User{})
-
-  return db  
 }
